@@ -1,0 +1,135 @@
+/*Signed by Iniya Vasanthan V M (v.m.iniyavasanthan@email.com), Vishal S, Praveen S | GPG Signature verified*/
+:root {
+    --bg-color: #EAF4D3;
+    --text-color: #895B1E;
+    --accent1: #CA907E;
+    --accent2: #994636;
+    --button-color: #DBD8AE;
+    --shadow: 0 4px 15px rgba(137, 91, 30, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.camera-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+h2 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.camera-instruction {
+    color: var(--accent2);
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+#cameraContainer {
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background-color: var(--content-bg);
+    border: 2px solid var(--accent1);
+}
+
+#cameraView {
+    width: 100%;
+    background-color: var(--bg-color);
+    display: block;
+}
+
+#captureBtn {
+    position: relative;
+    overflow: hidden;
+    background: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: var(--shadow);
+    margin: 1rem 0;
+    border: 1px solid var(--accent1);
+}
+
+#captureBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(219, 216, 174, 0.6);
+    background: #e0ddb5;
+}
+
+#captureBtn:active {
+    transform: translateY(1px);
+}
+
+.btn-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(137, 91, 30, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+#captureBtn:hover .btn-wave {
+    animation: wave 0.7s ease-out;
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(0.3, 0.3) translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(20, 20) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+#resultCanvas {
+    display: none;
+}
+
+@media (orientation: portrait) {
+    #cameraContainer {
+        width: 90vw;
+        height: 90vw;
+    }
+    
+    #cameraView {
+        height: 100%;
+        object-fit: cover;
+    }
+}
