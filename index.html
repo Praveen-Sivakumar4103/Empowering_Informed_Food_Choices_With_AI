@@ -1,0 +1,211 @@
+<!--Signed by Iniya Vasanthan V M (v.m.iniyavasanthan@email.com), Vishal S, Praveen S | GPG Signature verified-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Empowering Informed Food Choices With AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <header class="animate__animated animate__fadeInDown">
+        <div class="header-content">
+            <h1>Empowering Informed Food Choices With AI</h1>
+            <div class="tagline">
+                <div class="word-container" id="scanWord"></div>
+                <div class="word-container" id="analyzeWord"></div>
+                <div class="word-container" id="understandWord"></div>
+            </div>
+            <div class="scan-line"></div>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="animate__animated animate__fadeIn animate__delay-1s">Make better food choices with AI-powered insights</h2>
+        <div class="input-container animate__animated animate__fadeIn animate__delay-1s">
+            <label class="file-input-label">
+                <input type="file" id="imageInput" accept="image/*">
+                <span class="file-input-custom">
+                    <span class="file-input-icon">📄</span>
+                    <span class="file-input-text">Choose File</span>
+                    <span class="file-selected" id="fileSelected"></span>
+                    <span class="file-input-wave"></span>
+                </span>
+            </label>
+            <button class="action-btn" onclick="uploadImage()">
+                <span class="btn-icon">🔍</span>
+                <span class="btn-text">Extract Text</span>
+                <span class="btn-wave"></span>
+            </button>
+            <button class="action-btn" onclick="openCamera()">
+                <span class="btn-icon">📷</span>
+                <span class="btn-text">Capture Image</span>
+                <span class="btn-wave"></span>
+            </button>
+        </div>
+
+        <div class="content-box">
+            <h3>Extracted Text:</h3>
+            <div class="loading-effect" id="textLoader">
+                <div class="analyzing-text">Scanning...</div>
+                <div class="particles">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                </div>
+            </div>
+            <pre id="outputText" class="fade-in">No text extracted yet.</pre>
+        </div>
+
+        <div class="content-box">
+            <h3>Health Analysis:</h3>
+            <div class="loading-effect" id="healthLoader">
+                <div class="analyzing-text">Analyzing...</div>
+                <div class="particles">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                </div>
+            </div>
+            <div id="healthContent" class="fade-in">No analysis available yet.</div>
+        </div>
+
+        <!-- Personal Health Recommendations Section -->
+        <div class="content-box">
+            <h3>Personalized Health Recommendations</h3>
+            <p>Enter any health conditions or concerns for personalized advice:</p>
+            <textarea id="healthConcerns" class="health-textarea" placeholder="e.g. diabetes, high blood pressure, allergies..."></textarea>
+            <button class="action-btn" onclick="getPersonalizedRecommendations()">
+                <span class="btn-icon">💡</span>
+                <span class="btn-text">Get Recommendations</span>
+                <span class="btn-wave"></span>
+            </button>
+            <div class="loading-effect" id="recommendationLoader">
+                <div class="analyzing-text">Analyzing...</div>
+                <div class="particles">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                </div>
+            </div>
+            <div id="recommendationContent" class="fade-in">No recommendations yet. Enter your health concerns and click the button above.</div>
+        </div>
+
+        <!-- News Section -->
+        <div class="news-section" id="newsSection">
+            <h3>Latest Food Health News</h3>
+            <div class="news-container-mobile" id="newsContainerMobile">
+                <!-- News cards will be injected here by JavaScript -->
+            </div>
+            <div class="news-slider-container">
+                <div class="news-track" id="newsTrack">
+                    <!-- News cards will be injected here by JavaScript for desktop -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About This Project</h4>
+                <p>Using AI to help you make better nutritional choices by scanning and analyzing food labels.</p>
+            </div>
+            <div class="footer-section">
+                <h4>How It Works</h4>
+                <ol>
+                    <li>Capture or upload an image</li>
+                    <li>AI extracts the text</li>
+                    <li>Get detailed health analysis</li>
+                    <li>Tailored recommendations for your dietary needs</li>
+                </ol>
+            </div>
+            <div class="footer-section">
+                <h4>Technologies</h4>
+                <div class="tech-icons">
+                    <span class="tech-icon">🤖</span>
+                    <span class="tech-icon">🔍</span>
+                    <span class="tech-icon">📊</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 Empowering Informed Food Choices With AI
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Typewriter effect for header words
+        function typeWriter(words, elementId, speed, callback) {
+            let i = 0;
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            
+            function typing() {
+                if (i < words.length) {
+                    element.innerHTML += words.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else if (callback) {
+                    setTimeout(callback, 500);
+                }
+            }
+            typing();
+        }
+
+        // Animate the "Scan... Analyze... Understand..." text
+        function animateHeaderWords() {
+            typeWriter('Scan...', 'scanWord', 100, () => {
+                typeWriter('Analyze...', 'analyzeWord', 100, () => {
+                    typeWriter('Understand...', 'understandWord', 100, () => {
+                        // After all words are typed, restart animation
+                        setTimeout(() => {
+                            document.getElementById('scanWord').innerHTML = '';
+                            document.getElementById('analyzeWord').innerHTML = '';
+                            document.getElementById('understandWord').innerHTML = '';
+                            setTimeout(animateHeaderWords, 500);
+                        }, 2000);
+                    });
+                });
+            });
+        }
+        
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            animateHeaderWords();
+            
+            // Add animation to file input on hover
+            const fileInput = document.querySelector('.file-input-custom');
+            fileInput.addEventListener('mouseenter', () => {
+                fileInput.classList.add('animate__animated', 'animate__pulse');
+            });
+            fileInput.addEventListener('mouseleave', () => {
+                fileInput.classList.remove('animate__animated', 'animate__pulse');
+            });
+
+            // Show selected file name
+            document.getElementById('imageInput').addEventListener('change', function() {
+                const fileSelected = document.getElementById('fileSelected');
+                if (this.files.length > 0) {
+                    fileSelected.textContent = this.files[0].name;
+                    fileSelected.style.display = 'inline';
+                } else {
+                    fileSelected.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

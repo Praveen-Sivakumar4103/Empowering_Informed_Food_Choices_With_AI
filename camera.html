@@ -1,0 +1,26 @@
+<!--Signed by Iniya Vasanthan V M (v.m.iniyavasanthan@email.com), Vishal S, Praveen S | GPG Signature verified-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Capture</title>
+    <link rel="stylesheet" href="css/camera.css">
+</head>
+<body>
+    <div class="camera-header">
+        <h2>Camera Capture</h2>
+        <div class="camera-instruction">Point at food label or ingredient list</div>
+    </div>
+    <div id="cameraContainer">
+        <video id="cameraView" autoplay playsinline></video>
+        <canvas id="resultCanvas"></canvas>
+    </div>
+    <button id="captureBtn">
+        <span class="btn-icon">📷</span>
+        <span class="btn-text">Capture Image</span>
+        <span class="btn-wave"></span>
+    </button>
+    <script src="js/camera.js"></script>
+</body>
+</html>
